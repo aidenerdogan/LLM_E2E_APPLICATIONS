@@ -28,12 +28,11 @@ location = st.sidebar.selectbox("Pick a Cuisine", ("Turkey", "India", "Germany",
 #     for item in menu_items:
 #         st.write("-", item)
 
-if culture:
-    if location:
-        response = langchain_helper.generate_restaurant_name_and_items(culture, location)
-        st.header(response['restaurant_name'])
-        menu_items = response['menu_items'].strip().split(",")
-        st.write("**Menu Items**")
-        for item in menu_items:
-            st.write("-", item)
+if culture and location:
+    response = langchain_helper.generate_restaurant_name_and_items(culture, location)
+    st.header(response['restaurant_name'])
+    menu_items = response['menu_items'].strip().split(",")
+    st.write("**Menu Items**")
+    for item in menu_items:
+        st.write("-", item)
 
